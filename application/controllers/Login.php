@@ -10,12 +10,12 @@ class Login extends REST_Controller {
         $this->load->model('m_login');
 	}
 
-	function index_get(){
+	function index_post(){
         $data = $this->m_login->login(
-                                        $this->get('username'),
-                                        hash('sha512', $this->get('password'))
+                                        $this->post('username'),
+                                        $this->post('password')
                                         );
-
+        // $data = "test";
         $this->response($data, 200);
     }
 
