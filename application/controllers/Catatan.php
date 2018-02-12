@@ -10,8 +10,25 @@ class Catatan extends REST_Controller {
         $this->load->model('m_catatan');
 	}
 
-	function index_post(){
+    function ubah_post(){
+        $data = $this->m_catatan->update(
+                                        $this->post('catatan'),
+                                        $this->post('id')
+                                        );
+        // $data = "test";
+        $this->response($data, 200);
+    }
+
+    function index_post(){
         $data = $this->m_catatan->read_id_user(
+                                        $this->post('id')
+                                        );
+        // $data = "test";
+        $this->response($data, 200);
+    }
+
+	function read_post(){
+        $data = $this->m_catatan->read_id(
                                         $this->post('id')
                                         );
         // $data = "test";

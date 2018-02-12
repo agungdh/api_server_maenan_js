@@ -17,11 +17,18 @@ class M_catatan extends CI_Model{
 		$this->db->query($sql, array($id_user, $catatan));
 	}
 
-	function update($id) {
+	function update($catatan, $id) {
 		$sql = "UPDATE catatan
 				SET catatan = ?
 				WHERE id = ?";
-		return $this->db->query($sql, array($id))->result();
+		$this->db->query($sql, array($catatan, $id));
+	}
+
+	function read_id($id) {
+		$sql = "SELECT *
+				FROM catatan
+				WHERE id = ?";
+		return $this->db->query($sql, array($id))->row();
 	}
 
 	function read_id_user($id_user) {
