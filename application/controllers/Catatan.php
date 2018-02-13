@@ -12,7 +12,7 @@ class Catatan extends REST_Controller {
 
     function ubah_post(){
         $data = $this->m_catatan->update(
-                                        $this->post('catatan'),
+                                        $this->security->xss_clean($this->post('catatan')),
                                         $this->post('id')
                                         );
         // $data = "test";
@@ -46,7 +46,7 @@ class Catatan extends REST_Controller {
     function tambah_post(){
         $data = $this->m_catatan->tambah(
                                         $this->post('id'),
-                                        $this->post('catatan')
+                                        $this->security->xss_clean($this->post('catatan'))
                                         );
         // $data = "test";
         $this->response($data, 200);
